@@ -74,11 +74,19 @@ const TransactionForm = () => {
             </Stack>
             <RadioGroup mt={"4"} value={value}>
               <HStack gap="4">
-                <Radio onChange={() => setValue("expense")} value="expense">
-                  Expense
-                </Radio>
-                <Radio onChange={() => setValue("income")} value="income">
+                <Radio
+                  colorPalette={"blue"}
+                  onChange={() => setValue("income")}
+                  value="income"
+                >
                   Income
+                </Radio>
+                <Radio
+                  colorPalette={"red"}
+                  onChange={() => setValue("expense")}
+                  value="expense"
+                >
+                  Expense
                 </Radio>
               </HStack>
             </RadioGroup>

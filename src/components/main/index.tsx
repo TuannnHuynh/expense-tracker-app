@@ -56,8 +56,14 @@ const Main = () => {
         justifyContent={"space-evenly"}
         flexDirection={["column", "column", "column", "row", "row"]}
       >
-        <ExpenseView />
-        <ExpenseView />
+        <ExpenseView
+          type={"income"}
+          data={allTransaction.filter((item) => item.type === "income")}
+        />
+        <ExpenseView
+          type={"expense"}
+          data={allTransaction.filter((item) => item.type === "expense")}
+        />
       </Flex>
     </Flex>
   );
