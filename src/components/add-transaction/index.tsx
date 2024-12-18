@@ -33,10 +33,8 @@ const TransactionForm = () => {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleFormSubmit(formData);
+    handleFormSubmit({ ...formData, type: value });
   };
-  console.log(formData);
-
   return (
     <DialogRoot initialFocusEl={() => ref.current}>
       <DialogTrigger asChild>
@@ -50,8 +48,8 @@ const TransactionForm = () => {
           Add New Transaction
         </Button>
       </DialogTrigger>
-      <form onSubmit={handleSubmit}>
-        <DialogContent>
+      <DialogContent>
+        <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>Add New Trasaction</DialogTitle>
           </DialogHeader>
@@ -74,18 +72,12 @@ const TransactionForm = () => {
                 />
               </Field>
             </Stack>
-            <RadioGroup
-              mt={"4"}
-              value={value}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                setValue(event.target.value)
-              }
-            >
+            <RadioGroup mt={"4"} value={value}>
               <HStack gap="4">
-                <Radio checked={formData.type === "expense"} value="expense">
+                <Radio onChange={() => setValue("expense")} value="expense">
                   Expense
                 </Radio>
-                <Radio checked={formData.type === "income"} value="income">
+                <Radio onChange={() => setValue("income")} value="income">
                   Income
                 </Radio>
               </HStack>
@@ -96,11 +88,13 @@ const TransactionForm = () => {
               <Button variant="outline">Cancel</Button>
             </DialogActionTrigger>
             <DialogActionTrigger asChild>
-              <Button type="submit">Add</Button>
+              <Button type="submit" bg="blue.600" color="white">
+                Add
+              </Button>
             </DialogActionTrigger>
           </DialogFooter>
-        </DialogContent>
-      </form>
+        </form>
+      </DialogContent>
     </DialogRoot>
   );
 };

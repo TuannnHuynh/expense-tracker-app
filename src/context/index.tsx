@@ -48,7 +48,7 @@ export default function GlobalState({ children }: GlobalStateProps) {
     amount: 0,
     description: "",
   });
-  const [value, setValue] = useState<string>("expense");
+  const [value, setValue] = useState<string>("");
   const [totalExpense, setTotalExpense] = useState<number>(0);
   const [totalIncome, setTotalIncome] = useState<number>(0);
   const [allTransaction, setAllTransaction] = useState<
